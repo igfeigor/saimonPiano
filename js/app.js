@@ -91,10 +91,16 @@ function noteClicked(elNote) {
     // User clicked the right note
     if (noteIndex === gState.seqNoteIndexes[gState.currNoteIndexToClick]) {
         console.log('User OK!');
+        playNote(elNote);
+        // elNote.classList.add('playing');
+        //  setTimeout(function donePlayingNote() {
+        //         elNote.classList.remove('playing');
+        //     }, 500);
+        
         gState.currNoteIndexToClick++;
         
         if (gState.currNoteIndexToClick === gState.seqNoteIndexes.length) {
-            computerTurn();
+            computerTurn()
         }
         
         
@@ -111,13 +117,24 @@ function noteClicked(elNote) {
     
 }
 
+function playNote(elNote) {
+    elNote.classList.add('playing');
+    setTimeout(function donePlayingNote() {
+        elNote.classList.remove('playing');
+    }, 500);
+}
+            
+
 function computerTurn() {
+    setTimeout (function () {
+        
      gState.isUserTurn = false;
      gState.currNoteIndexToClick  = 0;
-     //alert('User Turn is Over');
-     
      addRandomNote();
      playSeq();
+     
+    }
+     
+    , 1500)
 }
-
 
