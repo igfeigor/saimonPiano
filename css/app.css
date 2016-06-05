@@ -17,3 +17,8 @@
 .playing {
   outline: 1px solid gray;
 }
+.myScore{
+
+  font-size: 5em;
+  color:red;
+}
