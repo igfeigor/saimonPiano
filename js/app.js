@@ -15,13 +15,18 @@
 var NOTES;
 var audioRight = new Audio('sound/right.mp3');
 var audioWrong = new Audio('sound/wrong.mp3');
+var gNotes1 = new Audio('sound/1.wav');
+var gNote2 = new Audio('sound/2.wav');
+var gNote3 = new Audio('sound/3.wav');
+
 
 // This is my State:
 var gState = {
     isUserTurn: false,
     seqNoteIndexes: [],
     currNoteIndexToClick: 0,
-    score: 0
+    score: 0, 
+    notes: [new Audio('sound/1.wav'), new Audio('sound/2.wav'), new Audio('sound/3.wav')]
 }
 
 function init() {
@@ -67,13 +72,20 @@ function playSeq() {
 
         setTimeout(function playNote() {
             elNotes[seqNoteIndex].classList.add('playing');
+                gState.notes[seqNoteIndex].currentTime = 0            
+                gState.notes[seqNoteIndex].play();
+            
+
 
             setTimeout(function donePlayingNote() {
                 elNotes[seqNoteIndex].classList.remove('playing');
+                gState.notes[seqNoteIndex].pause();
+                
             }, 500);
 
             console.log('Playing: ', NOTES[seqNoteIndex].sound);
-        }, 1000 * i);
+        }, 
+        1000 * i);
 
     });
 
@@ -94,12 +106,7 @@ function noteClicked(elNote) {
     if (noteIndex === gState.seqNoteIndexes[gState.currNoteIndexToClick]) {
 
         console.log('User OK!');
-        playNote(elNote);
-        // elNote.classList.add('playing');
-        //  setTimeout(function donePlayingNote() {
-        //         elNote.classList.remove('playing');
-        //     }, 500);
-
+        playNote(elNote, gState.notes, noteIndex);
         gState.score += 1;
         updateScore();
         gState.currNoteIndexToClick++;
@@ -126,11 +133,15 @@ function noteClicked(elNote) {
     console.log('Note', NOTES[noteIndex]);
 }
 
-function playNote(elNote) {
+function playNote(elNote, note, index) {
 
     elNote.classList.add('playing');
+    note[index].currentTime = 0
+    note[index].play();
+    
     setTimeout(function donePlayingNote() {
         elNote.classList.remove('playing');
+        
     }, 500);
 }
 
