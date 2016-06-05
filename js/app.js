@@ -14,7 +14,7 @@
 'use strict';
 var NOTES;
 var audioRight = new Audio('sound/right.mp3');
-var audioRight = new Audio('sound/wrong.mp3');
+var audioWrong = new Audio('sound/wrong.mp3');
 
 // This is my State:
 var gState = {
@@ -119,6 +119,8 @@ function noteClicked(elNote) {
         console.log('User Wrong!');
         var elPiano = document.querySelector('.piano');
         elPiano.style.display = 'none';
+        audioWrong.play();
+        
     }
     // console.log('elNote', elNote);
     console.log('Note', NOTES[noteIndex]);
