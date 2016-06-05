@@ -32,6 +32,7 @@ body {
     font-family:'Oswald';
     font-size: 40px;
   }
+  
 #middleCircle {
     height: 300px;
     width: 300px;
@@ -53,45 +54,33 @@ body {
     margin-bottom: 0px;
     font-family:'Yellowtail';
   }
-  p {
-    color:white;
-    font-size: 16px;
-    font-family:'Oswald';
-    margin-top: 0px;
-    margin-bottom: 0px;
-    text-align: center;
-    position: relative;
-    top:-10px;
-  }
-
-  
     .note0 {
-    background: -webkit-linear-gradient(left top, red, #FF7979);
-    background: -o-linear-gradient(bottom right, red, #FF7979);
-    background: -moz-linear-gradient(bottom right, red, #FF7979);
     background: linear-gradient(to bottom right, red, #FF7979);
     border-radius: 30% 0 0 0;
   }
+    .note0.playing {
+    background:  #FF7979;
+  }
   .note1 {
-    background: -webkit-linear-gradient(right top, blue, #A6A6FF);
-    background: -o-linear-gradient(bottom left, blue, #A6A6FF);
-    background: -moz-linear-gradient(bottom left, blue, #A6A6FF);
     background: linear-gradient(to bottom left, blue, #A6A6FF);
     border-radius: 0 30% 0 0;
   }
+  .note1.playing {
+    background:  #A6A6FF;
+  }
   .note2 {
-    background: -webkit-linear-gradient(left bottom, green, #00FF00);
-    background: -o-linear-gradient(top right, green, #00FF00);
-    background: -moz-linear-gradient(top right, green, #00FF00);
     background: linear-gradient(to top right, green, #00FF00);
     border-radius: 0 0 0 30%;
   }
+  .note2.playing {
+    background:  #00FF00;
+  }
   .note3 {
-    background: -webkit-linear-gradient(right bottom, yellow, #FFFF95);
-    background: -o-linear-gradient(top left, yellow, #FFFF95);
-    background: -moz-linear-gradient(top left, yellow, #FFFF95);
     background: linear-gradient(to top left, yellow, #FFFF95);
     border-radius: 0 0 30% 0;
+  }
+    .note3.playing {
+    background:  #FFFF95;
   }
 
 

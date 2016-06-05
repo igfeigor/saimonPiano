@@ -24,11 +24,12 @@ var gState = {
     seqNoteIndexes: [],
     currNoteIndexToClick: 0,
     score: 0, 
-    notesAudio: [new Audio('sound/0.wav'), new Audio('sound/1.wav'), new Audio('sound/2.wav'),  new Audio('sound/3.wav')]
 }
 
 function init() {
     NOTES = createNotesModel(4);
+    console.log('NOTES[0].sound', NOTES[0].sound);
+     
     renderNotes(NOTES);
     updateScore();
     computerTurn();
@@ -38,7 +39,7 @@ function createNotesModel(size) {
     var notes = [];
 
     for (var i = 0; i < size; i++) {
-        var note = { sound: 'Note' + (i + 1), color: getRandomColor() };
+        var note = { sound: new Audio('sound/' + i +'.wav') };
         notes.push(note);
     }
     return notes;
@@ -68,14 +69,13 @@ function playSeq() {
 
         setTimeout(function playNote() {
             elNotes[seqNoteIndex].classList.add('playing');
-                gState.notesAudio[seqNoteIndex].currentTime = 0            
-                gState.notesAudio[seqNoteIndex].play();
+                NOTES[seqNoteIndex].sound.currentTime = 0            
+                NOTES[seqNoteIndex].sound.play();
             
-
 
             setTimeout(function donePlayingNote() {
                 elNotes[seqNoteIndex].classList.remove('playing');
-                gState.notesAudio[seqNoteIndex].pause();
+                NOTES[seqNoteIndex].sound.pause();
                 
             }, 500);
 
@@ -102,7 +102,7 @@ function noteClicked(elNote) {
     if (noteIndex === gState.seqNoteIndexes[gState.currNoteIndexToClick]) {
 
         console.log('User OK!');
-        playNote(elNote, gState.notesAudio, noteIndex);
+        playNote(elNote, NOTES, noteIndex);
         gState.score += 1;
         updateScore();
         gState.currNoteIndexToClick++;
@@ -132,8 +132,8 @@ function noteClicked(elNote) {
 function playNote(elNote, note, index) {
 
     elNote.classList.add('playing');
-    note[index].currentTime = 0
-    note[index].play();
+    NOTES[index].sound.currentTime = 0
+    NOTES[index].sound.play();
     
     setTimeout(function donePlayingNote() {
         elNote.classList.remove('playing');
