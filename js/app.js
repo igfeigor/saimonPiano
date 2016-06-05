@@ -152,7 +152,7 @@ function computerTurn() {
         gState.currNoteIndexToClick = 0;
         addRandomNote();
         playSeq();
-    }, 3200)
+    }, (gState.score===0)?750:3200)
 }
 
 function updateScore() {
