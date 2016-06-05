@@ -24,7 +24,7 @@ var gState = {
     seqNoteIndexes: [],
     currNoteIndexToClick: 0,
     score: 0, 
-    notesAudio: [new Audio('sound/1.wav'), new Audio('sound/2.wav'), new Audio('sound/3.wav'),  new Audio('sound/4.wav')]
+    notesAudio: [new Audio('sound/0.wav'), new Audio('sound/1.wav'), new Audio('sound/2.wav'),  new Audio('sound/3.wav')]
 }
 
 function init() {
@@ -148,7 +148,7 @@ function computerTurn() {
         gState.currNoteIndexToClick = 0;
         addRandomNote();
         playSeq();
-    }, (gState.score===0)?750:3200)
+    }, (gState.score===0)?750:3000)
 }
 
 function updateScore() {
